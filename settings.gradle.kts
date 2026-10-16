@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "kt_template"
+rootProject.name = "imprecosto3d"
 include(":app")

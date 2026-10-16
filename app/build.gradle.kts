@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace = "com.upchiapas.kt_template"
+    namespace = "com.upchiapas.imprecosto3d"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.upchiapas.kt_template"
+        applicationId = "com.upchiapas.imprecosto3d"
         minSdk = 26
         targetSdk = 37
         versionCode = 1

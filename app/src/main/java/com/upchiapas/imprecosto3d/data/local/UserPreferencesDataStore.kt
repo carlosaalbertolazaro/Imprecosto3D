@@ -1,0 +1,6 @@
+package com.upchiapas.imprecosto3d.data.local
+
+class UserPreferencesDataStore
+
+{
+}
