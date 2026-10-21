@@ -1,0 +1,42 @@
+{
+  "filaments": [
+    {
+      "id": "fil_pla",
+      "name": "PLA Estándar",
+      "material": "PLA",
+      "spoolWeightGrams": 1000.0,
+      "spoolPriceMxn": 380.0,
+      "densityGCm3": 1.24
+    },
+    {
+      "id": "fil_petg",
+      "name": "PETG Resistente",
+      "material": "PETG",
+      "spoolWeightGrams": 1000.0,
+      "spoolPriceMxn": 450.0,
+      "densityGCm3": 1.27
+    },
+    {
+      "id": "fil_abs",
+      "name": "ABS Alta Temp",
+      "material": "ABS",
+      "spoolWeightGrams": 1000.0,
+      "spoolPriceMxn": 420.0,
+      "densityGCm3": 1.04
+    },
+    {
+      "id": "fil_tpu",
+      "name": "TPU Flexible",
+      "material": "TPU",
+      "spoolWeightGrams": 1000.0,
+      "spoolPriceMxn": 550.0,
+      "densityGCm3": 1.21
+    }
+  ],
+  "printer": {
+    "id": "prn_fdm",
+    "name": "Impresora FDM Estándar",
+    "powerConsumptionWatts": 200,
+    "wearCostPerHourMxn": 2.50
+  }
+}
