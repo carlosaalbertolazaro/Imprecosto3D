@@ -3,26 +3,30 @@ package com.upchiapas.imprecosto3d
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.upchiapas.imprecosto3d.ui.theme.ImpreCosto3DTheme
-
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.upchiapas.imprecosto3d.presentation.screens.CalculatorScreen
+import com.upchiapas.imprecosto3d.presentation.theme.ImpreCosto3DTheme
+import com.upchiapas.imprecosto3d.presentation.viewmodel.ImpreCostoViewModel
 class MainActivity : ComponentActivity() {
+    private val viewModel: ImpreCostoViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
             ImpreCosto3DTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+                    CalculatorScreen(
+                        uiState = uiState,
+                        onEvent = viewModel::onEvent
                     )
                 }
             }
@@ -30,18 +34,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    ImpreCosto3DTheme {
-        Greeting("Android")
-    }
-}
