@@ -10,11 +10,20 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+
+import com.upchiapas.imprecosto3d.di.AppContainer
 import com.upchiapas.imprecosto3d.presentation.screens.CalculatorScreen
 import com.upchiapas.imprecosto3d.presentation.theme.ImpreCosto3DTheme
 import com.upchiapas.imprecosto3d.presentation.viewmodel.ImpreCostoViewModel
+import com.upchiapas.imprecosto3d.presentation.viewmodel.ImpreCostoViewModelFactory
+
 class MainActivity : ComponentActivity() {
-    private val viewModel: ImpreCostoViewModel by viewModels()
+
+    private val viewModel: ImpreCostoViewModel by viewModels {
+        val appContainer = AppContainer(applicationContext)
+        ImpreCostoViewModelFactory(appContainer.impreCostoRepository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -24,6 +33,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+
                     CalculatorScreen(
                         uiState = uiState,
                         onEvent = viewModel::onEvent
@@ -33,4 +43,3 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
